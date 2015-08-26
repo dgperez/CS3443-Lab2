@@ -41,7 +41,7 @@ public class Grades {
 		if (sortedGrades.size() % 2 == 0)
 			return (sortedGrades.get((int)midIndex) + sortedGrades.get((int)midIndex - 1)) / 2.0;
 		else
-			return sortedGrades.get((int)midIndex);
+			return sortedGrades.get((int)midIndex - 1);
 	}
 	
 	public int maximum(){
