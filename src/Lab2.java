@@ -1,9 +1,39 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 
 public class Lab2 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		Scanner in = null;
+		try {
+		    in = new Scanner(new File("data.txt"));
+		} catch (FileNotFoundException exception) {
+		    System.err.println("failed to open data.txt");
+		    System.exit(1);
+		}
+		while (in.hasNext()) {
+		    String name = in.next();
+		    List<Integer> grades = new ArrayList<>();
+		    while (in.hasNextInt()) {
+		        grades.add(in.nextInt());
+		    }
+		testGrades(new Grades(name, grades));   
+		}    
 
+		//testGrades(new Grades("Alice", Arrays.asList(87, 99, 96, 99, 86, 96, 77, 95, 70, 88)));
 	}
 
+	public static void testGrades(Grades grades) {
+	    System.out.println(grades.toString()); 
+	    System.out.printf("\tName:    %s\n", grades.getName());
+	    System.out.printf("\tLength:  %d\n", grades.length());
+	    System.out.printf("\tAverage: %.2f\n", grades.average());
+	    System.out.printf("\tMedian:  %.1f\n", grades.median());
+	    System.out.printf("\tMaximum: %d\n", grades.maximum());
+	    System.out.printf("\tMininum: %d\n", grades.minimum());
+	}
 }
